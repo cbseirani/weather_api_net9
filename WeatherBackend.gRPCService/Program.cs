@@ -10,6 +10,13 @@ var configuration = configBuilder.Build();
 // register Serilog
 builder.Services.AddSerilogLogging(configuration);
 
+// configure Redis caching
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration.GetConnectionString("RedisConnection");
+    options.InstanceName = "WeatherBackend_";
+});
+
 // register MongoDB
 builder.Services.AddMongoDb(configuration);
 

@@ -1,4 +1,5 @@
 using Grpc.Net.Client;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using WeatherBackend.Infrastructure.Extensions;
 using WeatherBackend.Infrastructure.Middleware;
 using WeatherBackend.Services;
@@ -22,6 +23,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddOpenApi();
+builder.Services.AddTransient<IUserService, UserService>();
 
 // register gRPC client
 builder.Services.AddSingleton(sp =>
@@ -30,8 +32,10 @@ builder.Services.AddSingleton(sp =>
     return new Greeter.GreeterClient(grpcChannel);
 });
 
-builder.Services.AddTransient<IUserService, UserService>();
-builder.Services.AddTransient<IWeatherService, WeatherService>();
+// register health checks
+builder.Services
+    .AddHealthChecks()
+    .AddCheck("self", () => HealthCheckResult.Healthy());
 
 var app = builder.Build();
 

@@ -1,4 +1,5 @@
 using Grpc.Core;
+using WeatherBackend.WeatherGrpc;
 
 namespace WeatherBackend.gRPCService.Services;
 
