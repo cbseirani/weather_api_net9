@@ -1,5 +1,7 @@
 # Weather App Backend
-Sample .NET9 REST API with a gRPC service tracking a user's weather searches w/docker compose
+Sample .NET9 REST API with a gRPC service tracking a user's weather searches w/docker compose.
+
+The UI can be found in this repo: https://github.com/cbseirani/weather_ui_angular19
 
 ## Features:
   - __Presentation:__ Weather REST API
