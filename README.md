@@ -11,6 +11,7 @@ The UI can be found in this repo: https://github.com/cbseirani/weather_ui_angula
   - __Messaging:__ RabbitMQ
   - __Documentation:__ OpenAPI & Swagger
   - __Logging:__ Serilog Sinks
+  - __Unit Testing:__ xUnit
 
 ## To Run Locally: 
   - install [Rider IDE](https://www.jetbrains.com/rider/) or [VS 2022 or latest CE](https://visualstudio.microsoft.com/vs/community/) 
