@@ -1,5 +1,6 @@
 ﻿namespace WeatherBackend.Services;
 
-public class Class1
+public interface IWeatherService
 {
+    
 }
