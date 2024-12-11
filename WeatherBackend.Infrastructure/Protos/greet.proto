@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "WeatherBackend.gRPCService";
+option csharp_namespace = "WeatherBackend.WeatherGrpc";
 
 package greet;
 

@@ -1,7 +1,9 @@
 ﻿using System.Net;
 using System.Text.Json;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 
-namespace WeatherBackend.Middleware;
+namespace WeatherBackend.Infrastructure.Middleware;
 
 public class ErrorMiddleware(RequestDelegate next, ILogger<ErrorMiddleware> logger)
 {

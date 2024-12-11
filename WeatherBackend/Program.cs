@@ -1,7 +1,9 @@
+using Grpc.Net.Client;
 using WeatherBackend.Infrastructure.Extensions;
-using WeatherBackend.Middleware;
+using WeatherBackend.Infrastructure.Middleware;
 using WeatherBackend.Services;
 using WeatherBackend.Services.Implementations;
+using WeatherBackend.WeatherGrpc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +22,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddOpenApi();
+
+// register gRPC client
+builder.Services.AddSingleton(sp =>
+{
+    var grpcChannel = GrpcChannel.ForAddress("https://localhost:5001");
+    return new Greeter.GreeterClient(grpcChannel);
+});
 
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IWeatherService, WeatherService>();
