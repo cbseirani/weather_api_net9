@@ -4,3 +4,9 @@
     build:
       context: .
       dockerfile: Dockerfile
+
+  weather_grpc_service:
+    image: weather_grpc_service
+    build:
+      context: .
+      dockerfile: Weather_gRPC_Service/Dockerfile
