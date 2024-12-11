@@ -1,13 +1,25 @@
 using WeatherBackend.gRPCService.Services;
+using WeatherBackend.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// set up configs from env vars
+var configBuilder = new ConfigurationBuilder().AddEnvironmentVariables(); 
+var configuration = configBuilder.Build();
+
+// register Serilog
+builder.Services.AddSerilogLogging(configuration);
+
+// register MongoDB
+builder.Services.AddMongoDb(configuration);
+
+// add services to the container.
+builder.Services.AddHostedService<WeatherFetchService>();
 builder.Services.AddGrpc();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// configure the HTTP request pipeline.
 app.MapGrpcService<GreeterService>();
 app.MapGet("/",
     () =>

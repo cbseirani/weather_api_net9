@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Workers\" />
+      <ProjectReference Include="..\WeatherBackend.Infrastructure\WeatherBackend.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,8 +1,4 @@
-using Microsoft.Extensions.Options;
-using MongoDB.Driver;
-using Serilog;
-using Serilog.Events;
-using WeatherBackend.Common.Models;
+using WeatherBackend.Infrastructure.Extensions;
 using WeatherBackend.Middleware;
 using WeatherBackend.Services;
 using WeatherBackend.Services.Implementations;
@@ -13,42 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 var configBuilder = new ConfigurationBuilder().AddEnvironmentVariables(); 
 var configuration = configBuilder.Build();
 
-var logLevel = configuration["LOG_LEVEL"] ?? "Information"; 
-var logEventLevel = Enum.Parse<LogEventLevel>(logLevel, true);
-var logName = configuration["LOG_NAME"] ?? "WeatherBackend.gRPCService.log";
-
-// create Serilog logger
-Log.Logger = new LoggerConfiguration()
-    .MinimumLevel.Is(logEventLevel)
-    .WriteTo.File(
-        Path.Combine(AppContext.BaseDirectory, logName), 
-        rollingInterval: RollingInterval.Month,
-        buffered: false)
-    .WriteTo.Console()
-    .CreateLogger();
-
 // register Serilog
-builder.Services.AddLogging(loggingBuilder =>
-{
-    loggingBuilder.ClearProviders();
-    loggingBuilder.AddSerilog(dispose: true);
-});
+builder.Services.AddSerilogLogging(configuration);
 
-// configure MongoDB settings
-builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("MongoDbSettings"));
-builder.Services.AddSingleton<IMongoClient>(sp =>
-{
-    var settings = sp.GetRequiredService<IOptions<MongoDbSettings>>().Value;
-    return new MongoClient(settings.ConnectionString);
-});
-
-// Register MongoDB database
-builder.Services.AddScoped(sp =>
-{
-    var settings = sp.GetRequiredService<IOptions<MongoDbSettings>>().Value;
-    var client = sp.GetRequiredService<IMongoClient>();
-    return client.GetDatabase(settings.DatabaseName);
-});
+// register MongoDB
+builder.Services.AddMongoDb(configuration);
 
 // register other services
 builder.Services.AddControllers();
@@ -61,7 +26,7 @@ builder.Services.AddTransient<IWeatherService, WeatherService>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
@@ -72,7 +37,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-// Register the custom error middleware
+// register the custom middleware
 app.UseMiddleware<ErrorMiddleware>();
 
 app.MapControllers();

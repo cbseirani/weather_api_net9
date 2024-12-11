@@ -19,6 +19,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\WeatherBackend.Common\WeatherBackend.Common.csproj" />
+      <ProjectReference Include="..\WeatherBackend.Infrastructure\WeatherBackend.Infrastructure.csproj" />
       <ProjectReference Include="..\WeatherBackend.Services\WeatherBackend.Services.csproj" />
     </ItemGroup>
 
