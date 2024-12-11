@@ -12,6 +12,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Services", "3-Services", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherBackend.Common", "WeatherBackend.Common\WeatherBackend.Common.csproj", "{F8358159-707D-4DF6-8D06-BFC28E636ACA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherBackend.Services", "WeatherBackend.Services\WeatherBackend.Services.csproj", "{D81DC9EB-D1D3-46D5-8A40-E3D37660E67B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Storage", "4-Storage", "{9F144569-C28B-4BCD-8EEE-885E17BF418E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherBackend.Repositories", "WeatherBackend.Repositories\WeatherBackend.Repositories.csproj", "{77EFCE57-32CD-4E45-8A25-ABB3357BD433}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,10 +36,20 @@ Global
 		{F8358159-707D-4DF6-8D06-BFC28E636ACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8358159-707D-4DF6-8D06-BFC28E636ACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8358159-707D-4DF6-8D06-BFC28E636ACA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D81DC9EB-D1D3-46D5-8A40-E3D37660E67B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D81DC9EB-D1D3-46D5-8A40-E3D37660E67B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D81DC9EB-D1D3-46D5-8A40-E3D37660E67B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D81DC9EB-D1D3-46D5-8A40-E3D37660E67B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77EFCE57-32CD-4E45-8A25-ABB3357BD433}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77EFCE57-32CD-4E45-8A25-ABB3357BD433}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77EFCE57-32CD-4E45-8A25-ABB3357BD433}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77EFCE57-32CD-4E45-8A25-ABB3357BD433}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{34325655-0ED4-4B90-B629-DD68C27E6E3A} = {409D4D4C-2A31-4961-92D2-BA784C67DF34}
 		{17D124C5-2FDD-46AD-AF88-9C4D18C7B39D} = {C9DECAA4-0B91-4F8C-9C5E-8E595FAC829A}
 		{F8358159-707D-4DF6-8D06-BFC28E636ACA} = {82BFBDB0-A172-4CCE-9E3A-F7EFDB01AB0D}
+		{D81DC9EB-D1D3-46D5-8A40-E3D37660E67B} = {C9DECAA4-0B91-4F8C-9C5E-8E595FAC829A}
+		{77EFCE57-32CD-4E45-8A25-ABB3357BD433} = {9F144569-C28B-4BCD-8EEE-885E17BF418E}
 	EndGlobalSection
 EndGlobal
